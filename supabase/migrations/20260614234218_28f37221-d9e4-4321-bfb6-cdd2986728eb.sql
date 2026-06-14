@@ -1,0 +1,11 @@
+CREATE SCHEMA IF NOT EXISTS private;
+REVOKE ALL ON FUNCTION public.handle_new_user() FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON FUNCTION public.set_updated_at() FROM PUBLIC, anon, authenticated;
+ALTER FUNCTION public.has_role(UUID, public.app_role) SET SCHEMA private;
+REVOKE ALL ON FUNCTION private.has_role(UUID, public.app_role) FROM PUBLIC, anon;
+GRANT USAGE ON SCHEMA private TO authenticated;
+GRANT EXECUTE ON FUNCTION private.has_role(UUID, public.app_role) TO authenticated;
+DROP POLICY "Patients can view own appointments" ON public.appointments;
+DROP POLICY "Participants can update appointments" ON public.appointments;
+CREATE POLICY "Patients can view own appointments" ON public.appointments FOR SELECT TO authenticated USING (auth.uid() = patient_id OR auth.uid() = psychologist_id OR private.has_role(auth.uid(), 'admin'));
+CREATE POLICY "Participants can update appointments" ON public.appointments FOR UPDATE TO authenticated USING (auth.uid() = patient_id OR auth.uid() = psychologist_id OR private.has_role(auth.uid(), 'admin')) WITH CHECK (auth.uid() = patient_id OR auth.uid() = psychologist_id OR private.has_role(auth.uid(), 'admin'));
