@@ -1,0 +1,6 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { AlertTriangle, Phone } from "lucide-react";
+import { PublicLayout } from "@/components/site-shell";
+
+export const Route = createFileRoute("/emergency")({ head: () => ({ meta: [{ title: "Emergency Mental Health Help | Mindwell" }, { name: "description", content: "Immediate mental health and crisis support guidance." }, { name: "robots", content: "noindex" }], links: [{ rel: "canonical", href: "/emergency" }] }), component: EmergencyPage });
+function EmergencyPage(){return <PublicLayout><section className="mx-auto max-w-3xl px-5 py-20"><div className="rounded-3xl border border-destructive/25 bg-card p-8 shadow-[var(--shadow-soft)]"><AlertTriangle className="size-12 text-destructive"/><h1 className="mt-6 text-4xl font-semibold">If you may be in immediate danger</h1><p className="mt-5 text-lg leading-8 text-muted-foreground">Mindwell is not an emergency service. Call your local emergency number now or go to the nearest emergency department. If possible, stay with someone you trust.</p><a href="tel:911" className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-xl bg-destructive px-6 font-semibold text-destructive-foreground"><Phone/> Call emergency services</a></div></section></PublicLayout>}
