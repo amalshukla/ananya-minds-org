@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PublicLayout } from "@/components/site-shell";
 import { faqs, services } from "@/lib/content";
-import therapistHero from "@/assets/therapist-hero.jpg";
+import therapistHero from "@/assets/therapist-warm.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
