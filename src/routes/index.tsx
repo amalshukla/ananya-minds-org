@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PublicLayout } from "@/components/site-shell";
 import { faqs, services } from "@/lib/content";
-import therapistHero from "@/assets/therapist-hero.jpg";
+import therapistHero from "@/assets/therapist-warm.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,16 +24,16 @@ function Index() {
   return (
     <PublicLayout>
       <section className="relative overflow-hidden bg-background">
-        <div className="absolute -left-24 top-20 size-80 rounded-full bg-accent/45 blur-3xl" aria-hidden="true" />
+        <div className="organic-blob absolute -left-24 top-20 size-80 bg-accent/20 blur-3xl" aria-hidden="true" />
         <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-14 px-5 py-16 lg:grid-cols-[1.02fr_.98fr] lg:px-8 lg:py-24">
           <div className="relative z-10 reveal-up">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground"><Heart className="size-4" aria-hidden="true" /> Compassionate care, at your pace</div>
-            <h1 className="mt-7 max-w-2xl text-5xl font-semibold leading-[1.08] tracking-[-0.035em] text-foreground sm:text-6xl lg:text-7xl">Feel understood.<br /><span className="text-primary">Feel like you again.</span></h1>
+            <h1 className="mt-7 max-w-2xl text-5xl leading-[1.08] tracking-[-0.035em] text-foreground sm:text-6xl lg:text-7xl">Feel <em className="font-normal text-primary">understood.</em><br />Feel like you again.</h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-muted-foreground">Evidence-based therapy with a human touch. A calm, confidential space to work through what matters—without judgment.</p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Button size="lg" variant="hero" asChild><a href="/book">Book a consultation <ArrowRight /></a></Button><Button size="lg" variant="outline" asChild><a href="/services">Explore support options</a></Button></div>
             <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground"><span className="flex items-center gap-2"><LockKeyhole className="size-4 text-primary" /> Private & confidential</span><span className="flex items-center gap-2"><CalendarCheck className="size-4 text-primary" /> Appointments this week</span><span className="flex items-center gap-2"><BadgeCheck className="size-4 text-primary" /> Registered psychologists</span></div>
           </div>
-          <div className="relative mx-auto w-full max-w-xl lg:max-w-none"><div className="absolute -inset-5 rotate-2 rounded-[2.5rem] bg-surface-teal" aria-hidden="true" /><img src={therapistHero} width={1536} height={1024} fetchPriority="high" alt="A welcoming clinical psychologist in a calm therapy room" className="relative aspect-[4/5] w-full rounded-[2rem] object-cover object-center shadow-[var(--shadow-soft)] lg:aspect-[5/6]" /><div className="glass-surface absolute -bottom-6 left-4 flex items-center gap-4 rounded-2xl border border-border/70 p-4 sm:left-[-2rem]"><span className="grid size-11 place-items-center rounded-xl bg-secondary text-primary"><Star /></span><div><strong className="block text-sm">4.9 patient rating</strong><span className="text-xs text-muted-foreground">Care that feels personal</span></div></div></div>
+          <div className="relative mx-auto w-full max-w-xl lg:max-w-none"><div className="organic-blob absolute -inset-8 bg-accent/20" aria-hidden="true" /><img src={therapistHero} width={1024} height={1280} fetchPriority="high" alt="A welcoming clinical psychologist in a warm, sunlit therapy room" className="relative aspect-[4/5] w-full rotate-2 rounded-[3rem] object-cover object-center shadow-[var(--shadow-soft)] transition duration-1000 hover:rotate-0 sm:rounded-[5rem]" /><div className="glass-surface absolute -bottom-6 left-4 flex items-center gap-4 rounded-3xl border border-card/70 p-4 sm:left-[-2rem]"><span className="grid size-11 place-items-center rounded-2xl bg-secondary text-primary"><BadgeCheck /></span><div><strong className="block text-sm">Fully accredited</strong><span className="text-xs text-muted-foreground">Clinical excellence, human care</span></div></div></div>
         </div>
       </section>
       <section className="border-y border-border bg-card"><div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-5 py-10 text-center md:grid-cols-4 lg:px-8">{[["15+","Years experience"],["2,500+","Sessions supported"],["98%","Feel heard"],["12","Specialist areas"]].map(([value,label])=><div key={label}><strong className="font-display text-3xl text-primary">{value}</strong><p className="mt-1 text-sm text-muted-foreground">{label}</p></div>)}</div></section>
