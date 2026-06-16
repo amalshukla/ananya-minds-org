@@ -6,7 +6,20 @@ import { PublicLayout } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { servicesQuery } from "@/queries";
 
-export const Route = createFileRoute("/book")({ head: () => ({ meta: [{ title: "Book a Psychology Appointment | Mindwell" }, { name: "description", content: "Choose a service, appointment format, and time for your Mindwell consultation." }, { property: "og:title", content: "Book an Appointment | Mindwell" }, { property: "og:description", content: "A simple, private way to take the next step." }], links: [{ rel: "canonical", href: "/book" }] }), component: BookPage });
+export const Route = createFileRoute("/book")({
+  head: () => ({
+    meta: [
+      { title: "Book a Psychology Appointment | Mindwell" },
+      { name: "description", content: "Choose a service, appointment format, and time for your Mindwell consultation." },
+      { property: "og:title", content: "Book an Appointment | Mindwell" },
+      { property: "og:description", content: "A simple, private way to take the next step." },
+      { property: "og:url", content: "/book" },
+    ],
+    links: [{ rel: "canonical", href: "/book" }],
+  }),
+  loader: ({ context }) => context.queryClient.ensureQueryData(servicesQuery({ pageSize: 50 })),
+  component: BookPage,
+});
 function BookPage() {
   const { data } = useSuspenseQuery(servicesQuery({ pageSize: 50 }));
   const services = data.results;
