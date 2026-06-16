@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookRouteImport } from './routes/book'
@@ -38,6 +39,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmergencyRoute = EmergencyRouteImport.update({
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/faqs': typeof FaqsRoute
   '/register': typeof RegisterRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/faqs': typeof FaqsRoute
   '/register': typeof RegisterRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/faqs': typeof FaqsRoute
   '/register': typeof RegisterRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/emergency'
+    | '/faqs'
     | '/register'
     | '/resources'
     | '/services'
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/emergency'
+    | '/faqs'
     | '/register'
     | '/resources'
     | '/services'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/emergency'
+    | '/faqs'
     | '/register'
     | '/resources'
     | '/services'
@@ -154,6 +166,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
   EmergencyRoute: typeof EmergencyRoute
+  FaqsRoute: typeof FaqsRoute
   RegisterRoute: typeof RegisterRoute
   ResourcesRoute: typeof ResourcesRoute
   ServicesRoute: typeof ServicesRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/emergency': {
@@ -242,6 +262,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
   EmergencyRoute: EmergencyRoute,
+  FaqsRoute: FaqsRoute,
   RegisterRoute: RegisterRoute,
   ResourcesRoute: ResourcesRoute,
   ServicesRoute: ServicesRoute,
