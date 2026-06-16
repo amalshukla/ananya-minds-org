@@ -1,0 +1,36 @@
+import type { ReactNode } from "react";
+import { Inbox } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+export interface EmptyStateProps {
+  icon?: ReactNode;
+  title: string;
+  description?: string;
+  action?: ReactNode;
+  className?: string;
+}
+
+export function EmptyState({ icon, title, description, action, className }: EmptyStateProps) {
+  return (
+    <div
+      role="status"
+      className={cn(
+        "warm-card flex flex-col items-center justify-center gap-4 p-10 text-center",
+        className,
+      )}
+    >
+      <span className="grid size-14 place-items-center rounded-full bg-secondary text-primary">
+        {icon ?? <Inbox aria-hidden="true" />}
+      </span>
+      <div>
+        <h3 className="font-display text-xl">{title}</h3>
+        {description && (
+          <p className="mx-auto mt-1 max-w-sm text-sm leading-6 text-muted-foreground">
+            {description}
+          </p>
+        )}
+      </div>
+      {action}
+    </div>
+  );
+}
