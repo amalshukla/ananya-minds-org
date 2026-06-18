@@ -21,7 +21,6 @@ import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BookRouteImport } from './routes/book'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
@@ -91,11 +90,6 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BookRoute = BookRouteImport.update({
-  id: '/book',
-  path: '/book',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -142,7 +136,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
-  '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
@@ -164,7 +157,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
-  '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
@@ -187,7 +179,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
-  '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
@@ -212,7 +203,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/blog'
-    | '/book'
     | '/contact'
     | '/cookies'
     | '/emergency'
@@ -234,7 +224,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
-    | '/book'
     | '/contact'
     | '/cookies'
     | '/emergency'
@@ -256,7 +245,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/blog'
-    | '/book'
     | '/contact'
     | '/cookies'
     | '/emergency'
@@ -280,7 +268,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRouteWithChildren
-  BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   EmergencyRoute: typeof EmergencyRoute
@@ -381,13 +368,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/book': {
-      id: '/book'
-      path: '/book'
-      fullPath: '/book'
-      preLoaderRoute: typeof BookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -478,7 +458,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   BlogRoute: BlogRouteWithChildren,
-  BookRoute: BookRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   EmergencyRoute: EmergencyRoute,
