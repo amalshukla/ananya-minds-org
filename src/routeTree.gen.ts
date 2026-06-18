@@ -9,14 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VerifyPhoneRouteImport } from './routes/verify-phone'
+import { Route as VerifyEmailRouteImport } from './routes/verify-email'
+import { Route as TwoFactorRouteImport } from './routes/two-factor'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SignedOutRouteImport } from './routes/signed-out'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as MagicLinkRouteImport } from './routes/magic-link'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -24,6 +32,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AccountLockedRouteImport } from './routes/account-locked'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
@@ -31,6 +40,21 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const VerifyPhoneRoute = VerifyPhoneRouteImport.update({
+  id: '/verify-phone',
+  path: '/verify-phone',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyEmailRoute = VerifyEmailRouteImport.update({
+  id: '/verify-email',
+  path: '/verify-email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TwoFactorRoute = TwoFactorRouteImport.update({
+  id: '/two-factor',
+  path: '/two-factor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
   id: '/testimonials',
   path: '/testimonials',
@@ -44,6 +68,11 @@ const TermsRoute = TermsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignedOutRoute = SignedOutRouteImport.update({
+  id: '/signed-out',
+  path: '/signed-out',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -61,6 +90,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
   path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -69,6 +103,21 @@ const RegisterRoute = RegisterRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MagicLinkRoute = MagicLinkRouteImport.update({
+  id: '/magic-link',
+  path: '/magic-link',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqsRoute = FaqsRouteImport.update({
@@ -106,6 +155,11 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountLockedRoute = AccountLockedRouteImport.update({
+  id: '/account-locked',
+  path: '/account-locked',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -140,6 +194,7 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account-locked': typeof AccountLockedRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/book': typeof BookRoute
@@ -147,14 +202,22 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
   '/faqs': typeof FaqsRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/magic-link': typeof MagicLinkRoute
+  '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
   '/services': typeof ServicesRouteWithChildren
+  '/signed-out': typeof SignedOutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
+  '/two-factor': typeof TwoFactorRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/verify-phone': typeof VerifyPhoneRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -163,19 +226,28 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account-locked': typeof AccountLockedRoute
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
   '/faqs': typeof FaqsRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/magic-link': typeof MagicLinkRoute
+  '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
+  '/signed-out': typeof SignedOutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
+  '/two-factor': typeof TwoFactorRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/verify-phone': typeof VerifyPhoneRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -185,6 +257,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account-locked': typeof AccountLockedRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/book': typeof BookRoute
@@ -192,14 +265,22 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
   '/faqs': typeof FaqsRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/magic-link': typeof MagicLinkRoute
+  '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
   '/services': typeof ServicesRouteWithChildren
+  '/signed-out': typeof SignedOutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
+  '/two-factor': typeof TwoFactorRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/verify-phone': typeof VerifyPhoneRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -210,6 +291,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/account-locked'
     | '/auth'
     | '/blog'
     | '/book'
@@ -217,14 +299,22 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/emergency'
     | '/faqs'
+    | '/forgot-password'
+    | '/magic-link'
+    | '/onboarding'
     | '/privacy'
     | '/register'
+    | '/reset-password'
     | '/resources'
     | '/search'
     | '/services'
+    | '/signed-out'
     | '/sitemap.xml'
     | '/terms'
     | '/testimonials'
+    | '/two-factor'
+    | '/verify-email'
+    | '/verify-phone'
     | '/blog/$slug'
     | '/services/$slug'
     | '/blog/'
@@ -233,19 +323,28 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/account-locked'
     | '/auth'
     | '/book'
     | '/contact'
     | '/cookies'
     | '/emergency'
     | '/faqs'
+    | '/forgot-password'
+    | '/magic-link'
+    | '/onboarding'
     | '/privacy'
     | '/register'
+    | '/reset-password'
     | '/resources'
     | '/search'
+    | '/signed-out'
     | '/sitemap.xml'
     | '/terms'
     | '/testimonials'
+    | '/two-factor'
+    | '/verify-email'
+    | '/verify-phone'
     | '/blog/$slug'
     | '/services/$slug'
     | '/blog'
@@ -254,6 +353,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/account-locked'
     | '/auth'
     | '/blog'
     | '/book'
@@ -261,14 +361,22 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/emergency'
     | '/faqs'
+    | '/forgot-password'
+    | '/magic-link'
+    | '/onboarding'
     | '/privacy'
     | '/register'
+    | '/reset-password'
     | '/resources'
     | '/search'
     | '/services'
+    | '/signed-out'
     | '/sitemap.xml'
     | '/terms'
     | '/testimonials'
+    | '/two-factor'
+    | '/verify-email'
+    | '/verify-phone'
     | '/blog/$slug'
     | '/services/$slug'
     | '/blog/'
@@ -278,6 +386,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccountLockedRoute: typeof AccountLockedRoute
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRouteWithChildren
   BookRoute: typeof BookRoute
@@ -285,18 +394,47 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   EmergencyRoute: typeof EmergencyRoute
   FaqsRoute: typeof FaqsRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  MagicLinkRoute: typeof MagicLinkRoute
+  OnboardingRoute: typeof OnboardingRoute
   PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ResourcesRoute: typeof ResourcesRoute
   SearchRoute: typeof SearchRoute
   ServicesRoute: typeof ServicesRouteWithChildren
+  SignedOutRoute: typeof SignedOutRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
+  TwoFactorRoute: typeof TwoFactorRoute
+  VerifyEmailRoute: typeof VerifyEmailRoute
+  VerifyPhoneRoute: typeof VerifyPhoneRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/verify-phone': {
+      id: '/verify-phone'
+      path: '/verify-phone'
+      fullPath: '/verify-phone'
+      preLoaderRoute: typeof VerifyPhoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify-email': {
+      id: '/verify-email'
+      path: '/verify-email'
+      fullPath: '/verify-email'
+      preLoaderRoute: typeof VerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/two-factor': {
+      id: '/two-factor'
+      path: '/two-factor'
+      fullPath: '/two-factor'
+      preLoaderRoute: typeof TwoFactorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/testimonials': {
       id: '/testimonials'
       path: '/testimonials'
@@ -316,6 +454,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signed-out': {
+      id: '/signed-out'
+      path: '/signed-out'
+      fullPath: '/signed-out'
+      preLoaderRoute: typeof SignedOutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -339,6 +484,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
@@ -351,6 +503,27 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/magic-link': {
+      id: '/magic-link'
+      path: '/magic-link'
+      fullPath: '/magic-link'
+      preLoaderRoute: typeof MagicLinkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faqs': {
@@ -400,6 +573,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account-locked': {
+      id: '/account-locked'
+      path: '/account-locked'
+      fullPath: '/account-locked'
+      preLoaderRoute: typeof AccountLockedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -476,6 +656,7 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccountLockedRoute: AccountLockedRoute,
   AuthRoute: AuthRoute,
   BlogRoute: BlogRouteWithChildren,
   BookRoute: BookRoute,
@@ -483,14 +664,22 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   EmergencyRoute: EmergencyRoute,
   FaqsRoute: FaqsRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  MagicLinkRoute: MagicLinkRoute,
+  OnboardingRoute: OnboardingRoute,
   PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   ResourcesRoute: ResourcesRoute,
   SearchRoute: SearchRoute,
   ServicesRoute: ServicesRouteWithChildren,
+  SignedOutRoute: SignedOutRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,
+  TwoFactorRoute: TwoFactorRoute,
+  VerifyEmailRoute: VerifyEmailRoute,
+  VerifyPhoneRoute: VerifyPhoneRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
